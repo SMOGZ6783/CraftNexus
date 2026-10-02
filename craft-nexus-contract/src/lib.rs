@@ -16,7 +16,6 @@ trait Error {
 
 pub struct NotInitialized;
 
-<<<<<<< HEAD
 /// Centralised TTL thresholds and refresh helpers.
 pub mod ttl;
 
@@ -48,13 +47,12 @@ mod issue_1347_test;
 mod differential_test;
 #[cfg(test)]
 mod differential_upgrade_compatibility_test {
-=======
 impl Error for NotInitialized {
     fn code(&Self) -> u32 {
         ERROR_NOT_INITIALIZED
     }
     fn message(&Self) -> String {
-        String::from_str(\"max dispute duration not initialized\")
+        String::from_str("max dispute duration not initialized")
     }
 }
 
@@ -65,7 +63,7 @@ impl Error for InvalidDuration {
         ERROR_INVALID_DURATION
     }
     fn message(&Self) -> String {
-        String::from_str(\"invalid max dispute duration\")
+        String::from_str("invalid max dispute duration")
     }
 }
 
@@ -139,7 +137,6 @@ pub impl CraftNexusContract {
 #test
 }
 mod tests {
->>>>>>> upstream/main
     use super::*;
     use sorban_std::Env;
 
@@ -10087,7 +10084,6 @@ impl CraftNexusContract {
             }
         }
 
-<<<<<<< HEAD
         env.events().publish(
             (Symbol::new(&env, "stake_liquidation_cured"), artisan),
             env.ledger().timestamp(),
@@ -13197,7 +13193,6 @@ pub struct UpgradeApprovalState {
     pub approvals: Vec<Address>,
 }
 
-<<<<<<< HEAD
 /// Per-token fee configuration introduced for #239.
 ///
 /// The legacy `FeeTokenIndex` storage held only a flat `Vec<Address>` of
@@ -13238,7 +13233,6 @@ pub struct UpgradeApprovalState {
 /// refresh on-demand when escrow operations reference new tokens. The `accumulated`
 /// field provides audit trail for fee reconciliation; timestamp context is
 /// available via escrow event logs.
-=======
 const TOTAL_FEES: Symbol = symbol_short!("TOT_FEES");
 
 const TTL_THRESHOLD: u32 = 10_000;
@@ -16092,14 +16086,12 @@ impl CraftNexusContract {
         caller: &Address,
         transition: DisputeTransition,
     ) -> Result<(), Error> {
-<<<<<<< HEAD
         match transition {
             DisputeTransition::Initiate
             | DisputeTransition::SubmitEvidence
             | DisputeTransition::Escalate
             | DisputeTransition::ProposeRefund => {
                 if *caller != escrow.buyer && *caller != escrow.seller {
-=======
         if !Self::is_privileged_resolver(config, caller) {
             return Err(Error::Unauthorized);
         }
@@ -19019,8 +19011,6 @@ impl CraftNexusContract {
         config.platform_fee_bps
     }
 
-=======
->>>>>>> upstream/main
     /// Get platform wallet address
     pub fn get_platform_wallet(env: Env) -> Address {
         let config = Self::get_platform_config_internal(&env);
@@ -24668,7 +24658,7 @@ impl CraftNexusContract {
     }
 
     pub fn unpause(env: Env) {
-        let admin: Address = env.storage().get(&DataKey::Admin)\.unwrap();
+        let admin: Address = env.storage().get(&DataKey::Admin).unwrap();
         admin.require_auth();
         env.storage().set(&DataKey::Paused, &false);
     }
@@ -25152,3 +25142,5 @@ mod tests {
             if i >= buyer_next_counts.len() {
                 break;Sorry, something went wrong. Please try your request again.
 
+
+}}}}}}}}
